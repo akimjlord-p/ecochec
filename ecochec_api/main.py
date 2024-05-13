@@ -27,4 +27,4 @@ def get_data_from_device():
 
 
 if __name__ == "__main__":
-    app.run(host='147.45.106.124')
+    app.run(host='#########')

@@ -1,8 +1,8 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
-from config import BOT_TOKEN
-from handlers import choose_city, add_device, check_device, start, add_city
+from EcochecBot.config import BOT_TOKEN
+from EcochecBot.handlers import choose_city, add_device, check_device, start, add_city
 
 logging.basicConfig(level=logging.INFO)
 
