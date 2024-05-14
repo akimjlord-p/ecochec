@@ -5,7 +5,7 @@ from aiogram.types import Message
 from .. import texts
 from ..kbs.main_kb import get_main_kb
 from ..kbs.cancel import cancel_kb
-from ..db_func import is_admin, add_city, check_city
+from db_func import is_admin, add_city, check_city
 
 
 router = Router()
@@ -25,7 +25,7 @@ async def add_city_msg(message: Message, state: FSMContext):
 @router.message(AddCity.city)
 async def get_city(message: Message, state: FSMContext):
     if not check_city(message.text):
-        city_id = add_city(message.text)
+        city_id = add_city(str(message.text))
         await message.answer(text=texts.add_city(message.text, city_id), reply_markup=get_main_kb(message.from_user.id))
     else:
         await message.answer(text=texts.error_city(), reply_markup=get_main_kb(message.from_user.id))

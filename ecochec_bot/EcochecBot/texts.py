@@ -1,14 +1,14 @@
-from ecochec_bot.EcochecBot.db_func import check_user
-from ecochec_bot.EcochecBot.db_func import get_user_city, get_city_by_id
+from db_func import check_user
+from db_func import get_user_city, get_city_by_id
 
 
 def get_start_text(id_tg):
-    if check_user(id_tg):
-        city_id = get_user_city(id_tg)
-        city = get_city_by_id(get_city_by_id(city_id))
+    if check_user(str(id_tg)):
+        city_id = get_user_city(str(id_tg))
+        city = str(get_city_by_id(str(city_id)))
         return f'Привет. Ну что, посмотрим как сегодня на улице в городе {city}?'
     else:
-        return 'Привет. В каком городе ты живешь? Давай выберем твой город.'
+        return 'Привет. В каком городе ты живешь? Давай выберем твой город. Напиши - <b>выбрать город</b>'
 
 
 def choose_city_switch():
@@ -16,8 +16,9 @@ def choose_city_switch():
 
 
 def admin_info():
-    return ('добавление новой аппаратной системы - добавить устройство'
-            'добавление нового города - добавить город')
+    return ('Добавление новой аппаратной системы - <b>добавить устройство</b>\n'
+            'Добавление нового города - <b>добавить город</b>\n'
+            'Просмотр всех устройств в городе - <b>все устройства города</b>')
 
 
 def set_city(city):

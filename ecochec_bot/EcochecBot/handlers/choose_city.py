@@ -6,7 +6,7 @@ from .. import texts
 from ..kbs.kb_to_choose_city import c_get_kb, CityCallbackFactory
 from ..kbs.main_kb import get_main_kb
 from ..kbs.cancel import cancel_kb
-from ..db_func import get_cities, add_user, get_city_by_id, check_user, change_city
+from db_func import get_cities, add_user, get_city_by_id, check_user, change_city
 from aiogram import html
 
 router = Router()

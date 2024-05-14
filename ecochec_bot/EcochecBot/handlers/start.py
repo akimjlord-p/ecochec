@@ -6,7 +6,7 @@ from aiogram.fsm.state import default_state
 from aiogram.types import Message
 from ecochec_bot.EcochecBot.texts import get_start_text, info, admin_info
 from ..kbs.main_kb import get_main_kb
-from ..db_func import is_admin
+from db_func import is_admin
 
 
 router = Router()

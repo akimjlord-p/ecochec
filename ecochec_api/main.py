@@ -16,10 +16,10 @@ def get_data_from_device():
     device_id = request.args.get('deviceid')
     temperature = request.args.get('temperature')
     noise = request.args.get('noise')
-    city_id = request.args.get('cityid')
+    g = request.args.get('g')
     longitude = request.args.get('longitude')
     latitude = request.args.get('latitude')
-    res = set_data_to_device(device_id, temperature, noise, city_id, longitude, latitude)
+    res = set_data_to_device(device_id, temperature, g, noise, latitude, longitude)
     if res == 'OK':
         return "<h1 style='color:green'> OK </h1>"
     else:
@@ -27,4 +27,5 @@ def get_data_from_device():
 
 
 if __name__ == "__main__":
-    app.run(host='#########')
+    app.run()
+#host='147.45.106.124'

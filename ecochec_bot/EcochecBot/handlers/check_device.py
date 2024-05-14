@@ -6,7 +6,7 @@ from .. import texts
 from ..kbs.kb_to_choose_device import d_get_kb, DeviceCallbackFactory
 from ..kbs.main_kb import get_main_kb
 from ..kbs.cancel import cancel_kb
-from ..db_func import get_devices, get_data_from_device, get_user_city, check_user, get_addr, get_city_by_id
+from db_func import get_devices, get_data_from_device, get_user_city, check_user, get_addr, get_city_by_id
 from aiogram import html
 router = Router()
 
@@ -22,6 +22,9 @@ class CheckDevice(StatesGroup):
 async def choose_device_msg(message: Message, state: FSMContext):
     if check_user(str(message.from_user.id)):
         devices_info = get_devices(get_user_city(str(message.from_user.id)))
+        if not devices_info:
+            await message.answer(text='В вашем городе не установлена система Ecochec')
+            return
         kb = d_get_kb(len(devices_info), [device['address'] for device in devices_info],
                       [device['device_id'] for device in devices_info], 0)
         await state.set_state(CheckDevice.device)

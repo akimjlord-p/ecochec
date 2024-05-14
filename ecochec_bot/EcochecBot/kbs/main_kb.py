@@ -1,5 +1,5 @@
 from aiogram import types
-from ..db_func import is_admin, check_user
+from db_func import is_admin, check_user
 
 
 def get_main_kb(id_tg):
